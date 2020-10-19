@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_message,only:v[:show, :edit, :update, :destroy]
+  before_action :set_message,only:[:show, :edit, :update, :destroy]
   
   def index
     @messages = Message.all
@@ -28,8 +28,6 @@ class MessagesController < ApplicationController
   end
   
   def update
-    @message = Message.find(params[:id])
-    
     if @message.update(message_params)
       flash[:success] = 'Messageは正常に更新されました'
       redirect_to @message
